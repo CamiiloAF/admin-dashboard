@@ -1,11 +1,28 @@
+import 'package:admin_dashboard/providers/auth_provider.dart';
+import 'package:admin_dashboard/ui/views/dashboard_view.dart';
 import 'package:fluro/fluro.dart';
+import 'package:provider/provider.dart';
 
 import '../ui/views/login_view.dart';
 import '../ui/views/register_view.dart';
 
 class AdminHandlers {
-  static Handler login = Handler(handlerFunc: (_, __) => const LoginView());
+  static Handler login = Handler(
+    handlerFunc: (context, _) {
+      final authProvider = Provider.of<AuthProvider>(context!);
+
+      return authProvider.authStatus == AuthStatus.notAuthenticated
+          ? const LoginView()
+          : const DashboardView();
+    },
+  );
   static Handler register = Handler(
-    handlerFunc: (_, __) => const RegisterView(),
+    handlerFunc: (context, __) {
+      final authProvider = Provider.of<AuthProvider>(context!);
+
+      return authProvider.authStatus == AuthStatus.notAuthenticated
+          ? const RegisterView()
+          : const DashboardView();
+    },
   );
 }

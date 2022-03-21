@@ -1,3 +1,4 @@
+---
 name: admin_dashboard
 description: Admin Dashboard - Curso de Flutter web
 publish_to: none
@@ -10,12 +11,14 @@ dependencies:
   cupertino_icons: ^1.0.4
   fluro: ^2.0.3
   google_fonts: ^2.3.1
+  provider: ^6.0.2
+  email_validator: ^2.0.1
+  shared_preferences: ^2.0.13
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.4
 flutter:
   uses-material-design: true
-
   assets:
-    - assets/
+  - assets/

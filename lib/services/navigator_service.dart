@@ -1,0 +1,13 @@
+import 'package:flutter/material.dart';
+
+class NavigatorService {
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+
+  static navigateTo(String routeName) {
+    return navigatorKey.currentState!.pushNamed(routeName);
+  }
+
+  static replaceTo(String routeName) {
+    return navigatorKey.currentState!.pushReplacementNamed(routeName);
+  }
+}
